@@ -1,6 +1,7 @@
 console.log('%c HI', 'color: firebrick')
 document.addEventListener('DOMContentLoaded', function(){
     fetchDogs();
+    dogBreeds();
 });
 
 function fetchDogs(){
@@ -15,4 +16,23 @@ function fetchDogs(){
         
         
         })})
+}
+
+function dogBreeds(){
+    fetch("https://dog.ceo/api/breeds/list/all")
+    .then(resp => resp.json())
+    .then(data => displayBreeds(data))
+}
+
+function displayBreeds(data){
+    
+    let breedarray = Object.keys(data.message)
+    breedarray.forEach(breed =>{
+
+        let ulNode = document.querySelector("#dog-breeds")
+        let breedli= document.createElement('li')
+        breedli.innerText =  breed
+        ulNode.appendChild(breedli)
+    })
+
 }
