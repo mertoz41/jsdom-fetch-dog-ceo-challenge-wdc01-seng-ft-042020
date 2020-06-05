@@ -33,6 +33,11 @@ function displayBreeds(data){
         let breedli= document.createElement('li')
         breedli.innerText =  breed
         ulNode.appendChild(breedli)
+        breedli.addEventListener('click', changeColor)
+        function changeColor(){
+            breedli.style.color = 'red'; 
+        }
     })
 
 }
+
